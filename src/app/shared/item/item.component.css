@@ -24,6 +24,7 @@ p {
 
 .cdk-drag-preview {
     box-shadow: 0px 5px 4px #666; 
+    opacity: .8;
 }
 
 

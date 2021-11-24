@@ -2,7 +2,9 @@
     class="card"
     fxLayout
     fxLayoutAlign="space-between center" 
-    cdkDrag>
+    cdkDrag
+    (cdkDragStarted)="onDrag()"
+    (cdkDragReleased)="onDrag()">
 
     <p>{{ item.description }}</p>
     <p 

@@ -1,8 +1,9 @@
 <h3>Income</h3>
 
-<app-item-list 
+<app-item-list
     cdkDropList
     (cdkDropListDropped)="itemDropped($event)"
     *ngIf="income.length"
-    [itemList]="income">
+    [itemList]="income" 
+    (trash)="onDrag()">
 </app-item-list>

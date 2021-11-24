@@ -1,5 +1,5 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { BudgetService } from '../budget.service';
 import { Item } from '../shared/item.model';
@@ -11,6 +11,7 @@ import { Item } from '../shared/item.model';
 })
 export class IncomeListComponent implements OnInit {
   income: Item[] = [];
+  @Output() trash = new EventEmitter();
 
   constructor(private budgetService: BudgetService) { }
 
@@ -25,4 +26,7 @@ export class IncomeListComponent implements OnInit {
     this.budgetService.moveItem('income', item);
   }
 
+  onDrag() {
+    this.trash.emit();
+  }
 }

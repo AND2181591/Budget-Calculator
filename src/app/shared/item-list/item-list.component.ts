@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Item } from '../item.model';
 
 @Component({
@@ -8,10 +8,14 @@ import { Item } from '../item.model';
 })
 export class ItemListComponent implements OnInit {
   @Input() itemList: Item[] = [];
+  @Output() trash = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onDrag() {
+    this.trash.emit();
+  }
 }

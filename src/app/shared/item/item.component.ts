@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Item } from '../item.model';
 
@@ -10,6 +10,7 @@ import { Item } from '../item.model';
 export class ItemComponent implements OnInit {
   hidden = true;
   @Input() item!: Item;
+  @Output() trash = new EventEmitter();
 
   constructor() {}
 
@@ -20,8 +21,7 @@ export class ItemComponent implements OnInit {
     this.hidden = !this.hidden;
   }
 
-  remove() {
-    console.log('Kewl!');
+  onDrag() {
+    this.trash.emit();
   }
-
 }

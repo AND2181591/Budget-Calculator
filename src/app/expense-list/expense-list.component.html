@@ -4,5 +4,6 @@
     cdkDropList
     (cdkDropListDropped)="itemDropped($event)"
     *ngIf="expenses.length"
-    [itemList]="expenses">
+    [itemList]="expenses"
+    (trash)="onDrag()">
 </app-item-list>
