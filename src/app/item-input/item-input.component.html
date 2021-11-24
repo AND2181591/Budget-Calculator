@@ -1,0 +1,50 @@
+<form 
+    (ngSubmit)="onSubmit()"
+    [formGroup]="budgetForm"
+    #formDirective="ngForm"
+    fxLayout
+    fxLayout.lt-md="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="10px">
+    <mat-form-field appearance="fill">
+        <mat-label>Budget Type</mat-label>
+        <mat-select
+            formControlName="budgetType" 
+            #select>
+            <mat-option value="income">Income</mat-option>
+            <mat-option value="expense">Expense</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Amount</mat-label>
+        <input 
+            formControlName="amount"
+            matInput 
+            type="number" 
+            placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input 
+            formControlName="description"
+            type="text" 
+            matInput 
+            placeholder="Ex. Salary, Rent...">
+    </mat-form-field>
+    
+    <div 
+        class="button" 
+        ngClass.lt-md="buttonResize" 
+        fxLayoutAlign.lt-md="center">
+        <button 
+            [disabled]="!budgetForm.valid"
+            type="submit" 
+            mat-fab 
+            color="buttonColor">
+            Add
+        </button>
+    </div>
+</form>

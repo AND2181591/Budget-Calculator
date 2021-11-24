@@ -1,0 +1,13 @@
+<mat-card 
+    class="card"
+    fxLayout
+    fxLayoutAlign="space-between center" 
+    (mouseover)="toggleCloseVisibility()" 
+    (mouseout)="toggleCloseVisibility()">
+
+    <p>{{ item.description }}</p>
+    <p 
+        [ngClass]="item.budgetType === 'income' ? 'incomeBlue' : 'expenseRed'">
+        <span *ngIf="item.budgetType === 'expense'">-</span>
+        {{ item.amount }}</p>
+</mat-card>
