@@ -6,6 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatSelectModule, 
         MatButtonModule, 
         MatCardModule, 
-        MatIconModule
+        MatIconModule, 
+        DragDropModule
     ], 
     exports: [
         MatFormFieldModule, 
@@ -23,7 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatSelectModule, 
         MatButtonModule, 
         MatCardModule, 
-        MatIconModule
+        MatIconModule, 
+        DragDropModule
     ]
 })
 export class MaterialModule {}

@@ -1,3 +1,4 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { BudgetService } from '../budget.service';
 
@@ -20,4 +21,7 @@ export class ExpenseListComponent implements OnInit {
       });
   }
 
+  itemDropped(item: CdkDragDrop<Item[]>) {
+    this.budgetService.moveItem('expense', item);
+  }
 }

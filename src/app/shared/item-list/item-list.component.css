@@ -1,0 +1,7 @@
+app-item {
+    cursor: grab;
+}
+
+app-item:active {
+    cursor: grabbing;
+}

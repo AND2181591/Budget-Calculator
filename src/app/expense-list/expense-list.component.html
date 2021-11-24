@@ -1,6 +1,8 @@
 <h3>Expenses</h3>
 
 <app-item-list
+    cdkDropList
+    (cdkDropListDropped)="itemDropped($event)"
     *ngIf="expenses.length"
     [itemList]="expenses">
 </app-item-list>

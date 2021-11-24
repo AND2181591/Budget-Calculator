@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs';
@@ -30,6 +31,18 @@ export class BudgetService {
       this.calculateTotal(formInput.amount);
     }
   }
+
+
+  moveItem(budgetType: string, item: CdkDragDrop<Item[]>) {
+    if (budgetType === 'income') {
+      moveItemInArray(this.incomeArr, item.previousIndex, item.currentIndex);
+      this.getIncome$.next([...this.incomeArr]);
+    } else {
+      moveItemInArray(this.expenseArr, item.previousIndex, item.currentIndex);
+      this.getExpenses$.next([...this.expenseArr]);
+    }
+  }
+
 
   deleteItem(index: number): void {
     
