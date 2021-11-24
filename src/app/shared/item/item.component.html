@@ -1,11 +1,13 @@
 <mat-card 
     class="card"
     fxLayout
-    fxLayoutAlign="space-between center">
+    fxLayoutAlign="space-between center" 
+    cdkDrag>
 
     <p>{{ item.description }}</p>
     <p 
         [ngClass]="item.budgetType === 'income' ? 'incomeBlue' : 'expenseRed'">
         <span *ngIf="item.budgetType === 'expense'">-</span>
         {{ item.amount }}</p>
+        
 </mat-card>
