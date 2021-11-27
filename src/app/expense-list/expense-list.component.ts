@@ -24,9 +24,10 @@ export class ExpenseListComponent implements OnInit {
 
   itemDropped(item: CdkDragDrop<Item[]>) {
     this.budgetService.moveItem('expense', item);
+    console.log(item);
   }
 
-  onDrag() {
-    this.trash.emit();
+  onClose(index: number) {
+    this.budgetService.deleteItem(index, 'expense');
   }
 }

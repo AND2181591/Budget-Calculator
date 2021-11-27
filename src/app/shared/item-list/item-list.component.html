@@ -1,7 +1,8 @@
 <div
-    *ngFor="let item of itemList">
+    *ngFor="let item of itemList; let i = index">
     <app-item
-        [item]="item" 
-        (trash)="onDrag()">
+        [item]="item"
+        [itemIndex]="i"
+        (close)="onClose(i)">
     </app-item>
 </div>

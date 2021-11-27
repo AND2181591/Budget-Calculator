@@ -9,13 +9,28 @@ h2 {
 }
 
 .trash {
+    display: flex;
+    justify-content: center;
     height: 24px;
+}
+
+.trash-container {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    position: relative;
 }
 
 mat-icon {
     transform: scale(1.5);
     opacity: 1;
     animation: appear .3s ease-out;
+    margin: auto;
+    transition: transform .2s;
+}
+
+mat-icon:hover {
+    transform: scale(2.5);
 }
 
 @keyframes appear {
@@ -25,4 +40,10 @@ mat-icon {
     100% {
         opacity: 1;
     }
+}
+
+app-item-list {
+    position: absolute;
+    top: 0;
+    left: 45px;
 }

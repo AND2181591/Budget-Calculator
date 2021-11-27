@@ -2,14 +2,20 @@
     class="card"
     fxLayout
     fxLayoutAlign="space-between center" 
-    cdkDrag
-    (cdkDragStarted)="onDrag()"
-    (cdkDragReleased)="onDrag()">
+    cdkDrag>
 
     <p>{{ item.description }}</p>
-    <p 
-        [ngClass]="item.budgetType === 'income' ? 'incomeBlue' : 'expenseRed'">
+
+    <div 
+        fxLayout 
+        fxLayoutAlign="center center"
+        fxLayoutGap="5px">
+        <p 
+        [ngClass]="item.budgetType === 'income' ? 'income-blue' : 'expense-red'">
         <span *ngIf="item.budgetType === 'expense'">-</span>
-        {{ item.amount }}</p>
-        
+        ${{ item.amount}}
+        </p>
+        <mat-icon (click)="onClose()">close</mat-icon>
+    </div>
+    
 </mat-card>

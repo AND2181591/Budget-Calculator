@@ -1,4 +1,6 @@
+import { CdkDragStart } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BudgetService } from 'src/app/budget.service';
 
 import { Item } from '../item.model';
 
@@ -8,20 +10,16 @@ import { Item } from '../item.model';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  hidden = true;
+  @Input() itemIndex!: number;
   @Input() item!: Item;
-  @Output() trash = new EventEmitter();
+  @Output() close = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {
   }
 
-  toggleCloseVisibility() {
-    this.hidden = !this.hidden;
-  }
-
-  onDrag() {
-    this.trash.emit();
+  onClose() {
+    this.close.emit();
   }
 }

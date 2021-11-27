@@ -2,8 +2,9 @@
 
 <app-item-list
     cdkDropList
+    [cdkDropListData]="expenses"
     (cdkDropListDropped)="itemDropped($event)"
     *ngIf="expenses.length"
     [itemList]="expenses"
-    (trash)="onDrag()">
+    (close)="onClose($event)">
 </app-item-list>

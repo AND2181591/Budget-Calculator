@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 import { Item } from './shared/item.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,22 +19,24 @@ export class BudgetService {
   private expenseArr: Item[] = [];
   getExpenses$ = new Subject<Item[]>();
 
+
   constructor() { }
 
+  
   addItem(formInput: Item): void {
-    if (formInput.budgetType === 'expense') {
-      this.expenseArr.push(formInput);
-      this.getExpenses$.next([...this.expenseArr]);
-      this.calculateTotal(-formInput.amount);
-    } else {
+    if (formInput.budgetType === 'income') {
       this.incomeArr.push(formInput);
       this.getIncome$.next([...this.incomeArr]);
       this.calculateTotal(formInput.amount);
+    } else {
+      this.expenseArr.push(formInput);
+      this.getExpenses$.next([...this.expenseArr]);
+      this.calculateTotal(-formInput.amount);
     }
   }
 
 
-  moveItem(budgetType: string, item: CdkDragDrop<Item[]>) {
+  moveItem(budgetType: string, item: CdkDragDrop<Item[]>): void {
     if (budgetType === 'income') {
       moveItemInArray(this.incomeArr, item.previousIndex, item.currentIndex);
       this.getIncome$.next([...this.incomeArr]);
@@ -44,9 +47,18 @@ export class BudgetService {
   }
 
 
-  deleteItem(index: number): void {
-    
+  deleteItem(index: number, budgetType: string): void {
+    if (budgetType === 'income') {
+      this.calculateTotal(-this.incomeArr[index].amount);
+      this.incomeArr.splice(index, 1);
+      this.getIncome$.next([...this.incomeArr]);
+    } else {
+      this.calculateTotal(this.expenseArr[index].amount);
+      this.expenseArr.splice(index, 1);
+      this.getExpenses$.next([...this.expenseArr]);
+    }
   }
+
 
   private calculateTotal(amount: number): void {
     this.total = this.total + amount;

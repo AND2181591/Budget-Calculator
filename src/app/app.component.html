@@ -6,17 +6,11 @@
 
 <app-item-input></app-item-input>
 
-<div 
-  fxLayout
-  fxLayoutAlign="center" 
-  class="trash">
-  <mat-icon *ngIf="trash">delete</mat-icon>
-</div>
 
-<div 
+<div
   fxLayout
   fxLayoutAlign="center"
   fxLayoutGap="60px">
-  <app-income-list (trash)="onDrag()"></app-income-list>
-  <app-expense-list (trash)="onDrag()"></app-expense-list>
+  <app-income-list></app-income-list>
+  <app-expense-list></app-expense-list>
 </div>
